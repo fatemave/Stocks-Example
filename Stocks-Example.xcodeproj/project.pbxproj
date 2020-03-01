@@ -51,6 +51,8 @@
 		CE495670240C2E6100A032D3 /* CurveAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE49566F240C2E6100A032D3 /* CurveAlgorithm.swift */; };
 		CE495673240C330100A032D3 /* StockDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE495672240C330100A032D3 /* StockDetailResponse.swift */; };
 		CE495676240C335E00A032D3 /* StocksDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE495675240C335E00A032D3 /* StocksDetailModel.swift */; };
+		CE49567A240C3BDA00A032D3 /* DaysResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE495679240C3BDA00A032D3 /* DaysResponse.swift */; };
+		CE49567C240C3BF300A032D3 /* DaysModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE49567B240C3BF300A032D3 /* DaysModel.swift */; };
 		CEA0D740240BDF9000D2DF1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA0D73F240BDF9000D2DF1D /* AppDelegate.swift */; };
 		CEA0D74A240BDF9000D2DF1D /* Stocks_Example.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CEA0D748240BDF9000D2DF1D /* Stocks_Example.xcdatamodeld */; };
 		CEA0D74C240BDF9300D2DF1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEA0D74B240BDF9300D2DF1D /* Assets.xcassets */; };
@@ -131,6 +133,8 @@
 		CE495675240C335E00A032D3 /* StocksDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksDetailModel.swift; sourceTree = "<group>"; };
 		CE495677240C344E00A032D3 /* Stocks-Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Stocks-Widget.entitlements"; sourceTree = "<group>"; };
 		CE495678240C346B00A032D3 /* Stocks-Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Stocks-Example.entitlements"; sourceTree = "<group>"; };
+		CE495679240C3BDA00A032D3 /* DaysResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysResponse.swift; sourceTree = "<group>"; };
+		CE49567B240C3BF300A032D3 /* DaysModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysModel.swift; sourceTree = "<group>"; };
 		CEA0D73C240BDF9000D2DF1D /* Stocks-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stocks-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEA0D73F240BDF9000D2DF1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEA0D749240BDF9000D2DF1D /* Stocks_Example.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Stocks_Example.xcdatamodel; sourceTree = "<group>"; };
@@ -349,6 +353,7 @@
 			isa = PBXGroup;
 			children = (
 				CE495672240C330100A032D3 /* StockDetailResponse.swift */,
+				CE495679240C3BDA00A032D3 /* DaysResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -357,6 +362,7 @@
 			isa = PBXGroup;
 			children = (
 				CE495675240C335E00A032D3 /* StocksDetailModel.swift */,
+				CE49567B240C3BF300A032D3 /* DaysModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -549,6 +555,8 @@
 				CE49566C240C2D8800A032D3 /* DotCALayer.swift in Sources */,
 				CE49565C240C27A100A032D3 /* TodayViewController.swift in Sources */,
 				CE495676240C335E00A032D3 /* StocksDetailModel.swift in Sources */,
+				CE49567C240C3BF300A032D3 /* DaysModel.swift in Sources */,
+				CE49567A240C3BDA00A032D3 /* DaysResponse.swift in Sources */,
 				CE495673240C330100A032D3 /* StockDetailResponse.swift in Sources */,
 				CE495670240C2E6100A032D3 /* CurveAlgorithm.swift in Sources */,
 			);

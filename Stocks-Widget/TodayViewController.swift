@@ -23,16 +23,14 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.loadData()
+        self.loadChartData()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.extensionContext?.widgetLargestAvailableDisplayMode = .expanded
-        
-        let dataEntries = self.generateRandomEntries()
-        
-        self.chartView.dataEntries = dataEntries
+                
         self.chartView.isCurved = false
 
     }
@@ -56,21 +54,6 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         }
     }
     
-    private func generateRandomEntries() -> [PointEntry] {
-        var result: [PointEntry] = []
-        for i in 0..<5 {
-            let value = Int(arc4random() % 1000)
-            
-            let formatter = DateFormatter()
-            formatter.dateFormat = "d MMM"
-            var date = Date()
-            date.addTimeInterval(TimeInterval(24*60*60*i))
-            
-            result.append(PointEntry(value: value, label: formatter.string(from: date)))
-        }
-        return result
-    }
-    
     func loadData() {
         let groupUserDefaults = UserDefaults(suiteName: "group.pro.AAPL")
         guard let symbol = groupUserDefaults?.value(forKey: "symbol") as? String,
@@ -83,7 +66,17 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             if let stockDetailModel = model?.mapResponseToDomain() as? StockDetailModel {
                 DispatchQueue.main.async {
                     self.companyLabel.text = stockDetailModel.companyName
-                    self.changeValueLabel.text = "\(stockDetailModel.change)"
+                    if stockDetailModel.change < 0 {
+                        self.changeValueLabel.text = "\(stockDetailModel.change)"
+                        self.changeValueLabel.textColor = .red
+                    } else if stockDetailModel.change > 0 {
+                        self.changeValueLabel.text = "+\(stockDetailModel.change)"
+                        self.changeValueLabel.textColor = .green
+                    } else {
+                        self.changeValueLabel.text = "\(stockDetailModel.change) $"
+                        self.changeValueLabel.textColor = self.companyLabel.textColor
+                    }
+                    
                     self.priceValueLabel.text = "\(stockDetailModel.latestPrice) $"
                     
                     let dateFormatter = DateFormatter()
@@ -92,6 +85,35 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                     
                     self.lastUpdateValueLabel.text = dateString
                 }
+            }
+        }
+
+        task.resume()
+    }
+    
+    func loadChartData() {
+        let groupUserDefaults = UserDefaults(suiteName: "group.pro.AAPL")
+        guard let symbol = groupUserDefaults?.value(forKey: "symbol") as? String,
+            let url = URL(string: "https://cloud.iexapis.com/stable/stock/\(symbol.lowercased())/chart/5d?token=pk_995f14a470764c0eb3743129d0b82663") else { return }
+
+        let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
+            guard let data = data else { return }
+            let decoder = JSONDecoder()
+            let model = try? decoder.decode(DaysResponse.self, from: data)
+            var dataEntries: [PointEntry] = []
+            if let response = model {
+                for day in response {
+                    if let dayModel = day.mapResponseToDomain() as? DayModel {
+                        let formatter = DateFormatter()
+                        formatter.dateFormat = "d MMM"
+                        let entity = PointEntry(value: Int(dayModel.price), label: formatter.string(from: dayModel.date))
+                        dataEntries.append(entity)
+                    }
+                }
+            }
+            
+            DispatchQueue.main.async {
+                self.chartView.dataEntries = dataEntries
             }
         }
 

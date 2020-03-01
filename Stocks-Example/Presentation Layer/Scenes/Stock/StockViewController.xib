@@ -32,7 +32,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="zEz-Td-5iA">
-                    <rect key="frame" x="16" y="60" width="343" height="49"/>
+                    <rect key="frame" x="16" y="32" width="343" height="49"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="iHX-Ts-5vb">
                             <rect key="frame" x="0.0" y="0.0" width="163.5" height="49"/>
@@ -71,7 +71,7 @@
                     </subviews>
                 </stackView>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="XYp-hm-FbR">
-                    <rect key="frame" x="16" y="141" width="343" height="49"/>
+                    <rect key="frame" x="16" y="113" width="343" height="49"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="5Ka-tk-OTd">
                             <rect key="frame" x="0.0" y="0.0" width="163.5" height="49"/>
@@ -110,7 +110,7 @@
                     </subviews>
                 </stackView>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="paq-rg-NUI">
-                    <rect key="frame" x="16" y="222" width="343" height="49"/>
+                    <rect key="frame" x="16" y="194" width="343" height="49"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ZO9-iK-3Zx">
                             <rect key="frame" x="0.0" y="0.0" width="163.5" height="49"/>
@@ -149,7 +149,7 @@
                     </subviews>
                 </stackView>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="BYK-m2-2cS">
-                    <rect key="frame" x="16" y="303" width="343" height="20.5"/>
+                    <rect key="frame" x="16" y="275" width="343" height="20.5"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Volume:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TvY-Ko-STh">
                             <rect key="frame" x="0.0" y="0.0" width="163.5" height="20.5"/>
@@ -173,7 +173,7 @@
                 <constraint firstItem="paq-rg-NUI" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="Z6L-cw-wqP"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="BYK-m2-2cS" secondAttribute="trailing" constant="16" id="Zn8-GB-NMW"/>
                 <constraint firstItem="zEz-Td-5iA" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="aS9-dj-U85"/>
-                <constraint firstItem="zEz-Td-5iA" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="60" id="gvi-eF-xTU"/>
+                <constraint firstItem="zEz-Td-5iA" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="32" id="gvi-eF-xTU"/>
                 <constraint firstItem="BYK-m2-2cS" firstAttribute="top" secondItem="paq-rg-NUI" secondAttribute="bottom" constant="32" id="gwF-o0-E72"/>
                 <constraint firstItem="BYK-m2-2cS" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="kiW-C1-y8h"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="XYp-hm-FbR" secondAttribute="trailing" constant="16" id="pEP-Vp-of7"/>
