@@ -7,6 +7,7 @@
 //
 
 import GKViper
+import GKRepresentable
 
 protocol StockSearchPresenterInput: ViperPresenterInput { }
 
@@ -46,9 +47,35 @@ class StockSearchPresenter: ViperPresenter, StockSearchPresenterInput, StockSear
     // MARK: - StockSearchViewOutput
     override func viewIsReady(_ controller: UIViewController) {
         self.view?.setupInitialState(with: self.viewModel)
+        self.view?.beginLoading()
+        self.interactor?.getStocks()
+    }
+    
+    func filterContent(for searchText: String) {
+        self.viewModel.searchText = searchText
+        self.makeSections()
     }
     
     // MARK: - StockSearchInteractorOutput
     
+    func providedStocks(models: [StockModel]) {
+        self.view?.finishLoading(with: nil)
+        self.viewModel.stocks = models
+        self.makeSections()
+    }
+    
     // MARK: - Module functions
+    
+    func makeSections() {
+        let mainSection = TableSectionModel()
+ 
+        for stock in self.viewModel.stocks {
+            let isShow = self.viewModel.searchText.isEmpty ? true : stock.name.range(of: self.viewModel.searchText, options: .caseInsensitive) != nil
+            guard !stock.name.isEmpty, isShow else { continue }
+            let stockSearchModel = StockSearchCellModel(symbol: stock.symbol, name: stock.name)
+            mainSection.rows.append(stockSearchModel)
+        }
+        
+        self.view?.updateSections([mainSection])
+    }
 }

@@ -8,9 +8,13 @@
 
 import GKViper
 
-protocol StockSearchInteractorInput: ViperInteractorInput { }
+protocol StockSearchInteractorInput: ViperInteractorInput {
+    func getStocks()
+}
 
-protocol StockSearchInteractorOutput: ViperInteractorOutput { }
+protocol StockSearchInteractorOutput: ViperInteractorOutput {
+    func providedStocks(models: [StockModel])
+}
 
 open class StockSearchInteractor: ViperInteractor, StockSearchInteractorInput {
 
@@ -22,12 +26,20 @@ open class StockSearchInteractor: ViperInteractor, StockSearchInteractorInput {
         return output
     }
     
+    let mainRepository = MainRepository()
+    
     // MARK: - Initialization
     override init() {        
         super.init()
     }
     
     // MARK: - StockSearchInteractorInput
+    
+    func getStocks() {
+        self.mainRepository.getStocks { models in
+            self.output?.providedStocks(models: models)
+        }
+    }
     
     // MARK: - Module functions
 }

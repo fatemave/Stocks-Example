@@ -9,5 +9,6 @@
 import GKViper
 
 class StockSearchViewModel: ViperViewModel {
-    
+    var stocks: [StockModel] = []
+    var searchText: String = String()
 }
