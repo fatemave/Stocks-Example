@@ -57,7 +57,9 @@ class StockSearchPresenter: ViperPresenter, StockSearchPresenterInput, StockSear
     }
     
     func select(symbol: String) {
-        UserDefaults.standard.set(symbol, forKey: "symbol")
+        let groupUserDefaults = UserDefaults(suiteName: "group.pro.AAPL")
+        groupUserDefaults?.setValue(symbol, forKey: "symbol")
+
         self.router?.goBack(animated: true)
     }
     

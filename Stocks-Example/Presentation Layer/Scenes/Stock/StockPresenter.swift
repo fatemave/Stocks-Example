@@ -53,7 +53,8 @@ class StockPresenter: ViperPresenter, StockPresenterInput, StockViewOutput, Stoc
     }
     
     func viewWillAppear() {
-        if let symbol = UserDefaults.standard.value(forKey: "symbol") as? String {
+        let groupUserDefaults = UserDefaults(suiteName: "group.pro.AAPL")
+        if let symbol = groupUserDefaults?.value(forKey: "symbol") as? String {
             self.view?.beginLoading()
             self.interactor?.getStockDetail(symbol: symbol)
         } else {
