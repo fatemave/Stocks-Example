@@ -40,6 +40,8 @@
 		CE49564C240BF89500A032D3 /* StockSearchCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE495649240BF89500A032D3 /* StockSearchCellModel.swift */; };
 		CE49564D240BF89500A032D3 /* StockSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE49564A240BF89500A032D3 /* StockSearchCell.swift */; };
 		CE49564E240BF89500A032D3 /* StockSearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE49564B240BF89500A032D3 /* StockSearchCell.xib */; };
+		CE495650240C04D900A032D3 /* StockDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE49564F240C04D900A032D3 /* StockDetailResponse.swift */; };
+		CE495652240C05C300A032D3 /* StockDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE495651240C05C300A032D3 /* StockDetailModel.swift */; };
 		CEA0D740240BDF9000D2DF1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA0D73F240BDF9000D2DF1D /* AppDelegate.swift */; };
 		CEA0D74A240BDF9000D2DF1D /* Stocks_Example.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CEA0D748240BDF9000D2DF1D /* Stocks_Example.xcdatamodeld */; };
 		CEA0D74C240BDF9300D2DF1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEA0D74B240BDF9300D2DF1D /* Assets.xcassets */; };
@@ -82,6 +84,8 @@
 		CE495649240BF89500A032D3 /* StockSearchCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockSearchCellModel.swift; sourceTree = "<group>"; };
 		CE49564A240BF89500A032D3 /* StockSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockSearchCell.swift; sourceTree = "<group>"; };
 		CE49564B240BF89500A032D3 /* StockSearchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StockSearchCell.xib; sourceTree = "<group>"; };
+		CE49564F240C04D900A032D3 /* StockDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailResponse.swift; sourceTree = "<group>"; };
+		CE495651240C05C300A032D3 /* StockDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailModel.swift; sourceTree = "<group>"; };
 		CEA0D73C240BDF9000D2DF1D /* Stocks-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stocks-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEA0D73F240BDF9000D2DF1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEA0D749240BDF9000D2DF1D /* Stocks_Example.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Stocks_Example.xcdatamodel; sourceTree = "<group>"; };
@@ -211,6 +215,7 @@
 		CE495635240BF12E00A032D3 /* Responses */ = {
 			isa = PBXGroup;
 			children = (
+				CE49564F240C04D900A032D3 /* StockDetailResponse.swift */,
 				CE495636240BF1BF00A032D3 /* StockResponse.swift */,
 			);
 			path = Responses;
@@ -220,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				CE495639240BF1DE00A032D3 /* StockModel.swift */,
+				CE495651240C05C300A032D3 /* StockDetailModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -431,10 +437,12 @@
 				CE49563A240BF1DE00A032D3 /* StockModel.swift in Sources */,
 				CE49562D240BEC7B00A032D3 /* StockSearchRouter.swift in Sources */,
 				CE49560F240BEB6500A032D3 /* InitialRouter.swift in Sources */,
+				CE495650240C04D900A032D3 /* StockDetailResponse.swift in Sources */,
 				CE495645240BF42E00A032D3 /* MainRouter.swift in Sources */,
 				CE495621240BEC6900A032D3 /* StockPresenter.swift in Sources */,
 				CE49564D240BF89500A032D3 /* StockSearchCell.swift in Sources */,
 				CE49560C240BEB6500A032D3 /* InitialViewController.swift in Sources */,
+				CE495652240C05C300A032D3 /* StockDetailModel.swift in Sources */,
 				CE49562B240BEC7B00A032D3 /* StockSearchAssembly.swift in Sources */,
 				CE495640240BF38600A032D3 /* StocksErrorResponse.swift in Sources */,
 				CE49561C240BEC6900A032D3 /* StockViewController.swift in Sources */,

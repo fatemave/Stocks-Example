@@ -15,6 +15,7 @@ protocol StockSearchViewInput: ViperViewInput {
 
 protocol StockSearchViewOutput: ViperViewOutput {
     func filterContent(for searchText: String)
+    func select(symbol: String)
 }
 
 class StockSearchViewController: ViperViewController, StockSearchViewInput {
@@ -28,9 +29,8 @@ class StockSearchViewController: ViperViewController, StockSearchViewInput {
         return output
     }
     
-    let searchController = UISearchController(searchResultsController: nil)
+    private let searchController = UISearchController(searchResultsController: nil)
     private var sections: [TableSectionModel] = []
-    var searchResults : [TableSectionModel] = []
     
     // MARK: - Lifecycle
     override func viewDidLayoutSubviews() {
@@ -46,13 +46,15 @@ class StockSearchViewController: ViperViewController, StockSearchViewInput {
         self.definesPresentationContext = true
         self.navigationItem.titleView = searchController.searchBar
         self.searchController.hidesNavigationBarDuringPresentation = false
+        self.searchController.obscuresBackgroundDuringPresentation = false
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.separatorStyle = .none
-        self.tableView.contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 100.0, right: 0.0)
+        self.tableView.contentInset = UIEdgeInsets(top: 16.0, left: 0.0, bottom: 16.0, right: 0.0)
         self.tableView.backgroundColor = .white
         self.tableView.registerCellNib(StockSearchCell.self)
+        
     }
     
     func setupActions() { }
@@ -78,6 +80,7 @@ class StockSearchViewController: ViperViewController, StockSearchViewInput {
         super.finishLoading(with: error)
         DispatchQueue.main.async {
             ActivityView.shared.hide()
+            self.searchController.searchBar.searchTextField.becomeFirstResponder()
         }
     }
     
@@ -131,8 +134,8 @@ extension StockSearchViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let model = self.sections[indexPath.section].rows[indexPath.row]
          
-         if let _ = model as? StockSearchCellModel {
-             
+         if let model = model as? StockSearchCellModel {
+            self.output?.select(symbol: model.symbol)
          }
     }
 }

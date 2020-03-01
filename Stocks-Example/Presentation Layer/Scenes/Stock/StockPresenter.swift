@@ -52,7 +52,23 @@ class StockPresenter: ViperPresenter, StockPresenterInput, StockViewOutput, Stoc
         self.router?.showStockSearchViewController()
     }
     
+    func viewWillAppear() {
+        if let symbol = UserDefaults.standard.value(forKey: "symbol") as? String {
+            self.view?.beginLoading()
+            self.interactor?.getStockDetail(symbol: symbol)
+        } else {
+            self.view?.updateView(self.viewModel)
+        }
+    }
+
+    
     // MARK: - StockInteractorOutput
+    
+    func provideStockDetail(model: StockDetailModel) {
+        self.view?.finishLoading(with: nil)
+        self.viewModel.stockDetailModel = model
+        self.view?.updateView(self.viewModel)
+    }
     
     // MARK: - Module functions
 }

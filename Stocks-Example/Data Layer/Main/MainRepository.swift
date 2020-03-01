@@ -10,6 +10,7 @@ import GKUseCase
 
 protocol MainRepositoryInterface: RepositoryInterface {
     func getStocks(completion: @escaping ([StockModel]) -> Void)
+    func getDetail(symbol: String, completion: @escaping (StockDetailModel?) -> Void)
 }
 
 class MainRepository: StocksRepository, MainRepositoryInterface {
@@ -29,6 +30,21 @@ class MainRepository: StocksRepository, MainRepositoryInterface {
                 completion(mappedResult)
             } else {
                 completion([])
+            }
+        }
+    }
+    
+    func getDetail(symbol: String, completion: @escaping (StockDetailModel?) -> Void) {
+        guard let request = MainRouter.Remote.getDetail(symbol: symbol).request else {
+            completion(nil)
+            return
+        }
+        
+        self.execute(request, response: StockDetailResponse.self) { (result, _, error) in
+            if let mappedResult = result as? StockDetailModel, error == nil {
+                completion(mappedResult)
+            } else {
+                completion(nil)
             }
         }
     }

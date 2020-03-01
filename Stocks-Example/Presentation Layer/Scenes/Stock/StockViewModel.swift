@@ -9,5 +9,5 @@
 import GKViper
 
 class StockViewModel: ViperViewModel {
-    
+    var stockDetailModel: StockDetailModel?
 }

@@ -56,6 +56,11 @@ class StockSearchPresenter: ViperPresenter, StockSearchPresenterInput, StockSear
         self.makeSections()
     }
     
+    func select(symbol: String) {
+        UserDefaults.standard.set(symbol, forKey: "symbol")
+        self.router?.goBack(animated: true)
+    }
+    
     // MARK: - StockSearchInteractorOutput
     
     func providedStocks(models: [StockModel]) {
