@@ -8,6 +8,7 @@
 
 import GKViper
 import GKRepresentable
+import CoreData
 
 protocol StockSearchPresenterInput: ViperPresenterInput { }
 
@@ -59,6 +60,8 @@ class StockSearchPresenter: ViperPresenter, StockSearchPresenterInput, StockSear
     func select(symbol: String) {
         let groupUserDefaults = UserDefaults(suiteName: "group.pro.appcraft.stocks-example")
         groupUserDefaults?.setValue(symbol, forKey: "symbol")
+        
+        self.save(symbol: symbol)
 
         self.router?.goBack(animated: true)
     }
@@ -84,5 +87,27 @@ class StockSearchPresenter: ViperPresenter, StockSearchPresenterInput, StockSear
         }
         
         self.view?.updateSections([mainSection])
+    }
+    
+    // MARK: - Core Data
+    
+    func save(symbol: String) {
+        
+        guard let appDelegate =  UIApplication.shared.delegate as? AppDelegate else { return }
+        
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let entity = NSEntityDescription.entity(forEntityName: "Stock", in: context)!
+        
+        let stock = NSManagedObject(entity: entity, insertInto: context)
+        
+        stock.setValue(symbol, forKeyPath: "symbol")
+        
+        do {
+            try context.save()
+            print("Success save!")
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
     }
 }

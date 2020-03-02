@@ -8,6 +8,7 @@
 
 import UIKit
 import NotificationCenter
+import CoreData
 
 class TodayViewController: UIViewController, NCWidgetProviding {
         
@@ -19,6 +20,8 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     @IBOutlet private weak var lastUpdateValueLabel: UILabel!
     @IBOutlet private weak var chartTitleLabel: UILabel!
     @IBOutlet private weak var chartView: LineChart!
+    
+    private var coreDataStack = CoreDataStack()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -64,9 +67,9 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
     
     func loadData() {
-        let groupUserDefaults = UserDefaults(suiteName: "group.pro.appcraft.stocks-example")
-        guard let symbol = groupUserDefaults?.value(forKey: "symbol") as? String,
-            let url = URL(string: "https://cloud.iexapis.com/stable/stock/\(symbol.lowercased())/quote?token=pk_995f14a470764c0eb3743129d0b82663") else { return }
+        guard let symbol = self.getSymbolFromCoreData() else { return }
+        
+        guard let url = URL(string: "https://cloud.iexapis.com/stable/stock/\(symbol.lowercased())/quote?token=pk_995f14a470764c0eb3743129d0b82663") else { return }
 
         let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
             guard let data = data else { return }
@@ -112,9 +115,9 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
     
     func loadChartData() {
-        let groupUserDefaults = UserDefaults(suiteName: "group.pro.appcraft.stocks-example")
-        guard let symbol = groupUserDefaults?.value(forKey: "symbol") as? String,
-            let url = URL(string: "https://cloud.iexapis.com/stable/stock/\(symbol.lowercased())/chart/5d?token=pk_995f14a470764c0eb3743129d0b82663") else { return }
+        guard let symbol = self.getSymbolFromUserDefaults() else { return }
+        
+        guard let url = URL(string: "https://cloud.iexapis.com/stable/stock/\(symbol.lowercased())/chart/5d?token=pk_995f14a470764c0eb3743129d0b82663") else { return }
 
         let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
             guard let data = data else { return }
@@ -138,6 +141,36 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         }
 
         task.resume()
+    }
+    
+    // MARK: - User Defaults
+    func getSymbolFromUserDefaults() -> String? {
+        let groupUserDefaults = UserDefaults(suiteName: "group.pro.appcraft.stocks-example")
+        guard let symbol = groupUserDefaults?.value(forKey: "symbol") as? String else { return nil }
+        
+        return symbol
+    }
+    
+    // MARK: - Core Data
+
+    func getSymbolFromCoreData() -> String? {
+        
+        var symbol: String?
+        
+        let context = self.coreDataStack.persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Stock")
+        
+        do {
+            let result = try context.fetch(fetchRequest)
+            if let stock = result.last as? Stock {
+                symbol = stock.symbol
+            }
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        
+        return symbol
     }
     
 }

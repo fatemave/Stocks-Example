@@ -53,6 +53,10 @@
 		CE495676240C335E00A032D3 /* StocksDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE495675240C335E00A032D3 /* StocksDetailModel.swift */; };
 		CE49567A240C3BDA00A032D3 /* DaysResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE495679240C3BDA00A032D3 /* DaysResponse.swift */; };
 		CE49567C240C3BF300A032D3 /* DaysModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE49567B240C3BF300A032D3 /* DaysModel.swift */; };
+		CE495688240D8A9300A032D3 /* SharedPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE495687240D8A9300A032D3 /* SharedPersistentContainer.swift */; };
+		CE495689240D8B1100A032D3 /* Stocks_Example.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CEA0D748240BDF9000D2DF1D /* Stocks_Example.xcdatamodeld */; };
+		CE49568C240D8EFC00A032D3 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE49568B240D8EFC00A032D3 /* CoreDataStack.swift */; };
+		CE49568E240D8FC600A032D3 /* SharedPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE49568D240D8FC600A032D3 /* SharedPersistentContainer.swift */; };
 		CEA0D740240BDF9000D2DF1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA0D73F240BDF9000D2DF1D /* AppDelegate.swift */; };
 		CEA0D74A240BDF9000D2DF1D /* Stocks_Example.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CEA0D748240BDF9000D2DF1D /* Stocks_Example.xcdatamodeld */; };
 		CEA0D74C240BDF9300D2DF1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEA0D74B240BDF9300D2DF1D /* Assets.xcassets */; };
@@ -135,6 +139,9 @@
 		CE495678240C346B00A032D3 /* Stocks-Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Stocks-Example.entitlements"; sourceTree = "<group>"; };
 		CE495679240C3BDA00A032D3 /* DaysResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysResponse.swift; sourceTree = "<group>"; };
 		CE49567B240C3BF300A032D3 /* DaysModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysModel.swift; sourceTree = "<group>"; };
+		CE495687240D8A9300A032D3 /* SharedPersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedPersistentContainer.swift; sourceTree = "<group>"; };
+		CE49568B240D8EFC00A032D3 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		CE49568D240D8FC600A032D3 /* SharedPersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedPersistentContainer.swift; sourceTree = "<group>"; };
 		CEA0D73C240BDF9000D2DF1D /* Stocks-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stocks-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEA0D73F240BDF9000D2DF1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEA0D749240BDF9000D2DF1D /* Stocks_Example.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Stocks_Example.xcdatamodel; sourceTree = "<group>"; };
@@ -328,6 +335,7 @@
 		CE49565A240C27A100A032D3 /* Stocks-Widget */ = {
 			isa = PBXGroup;
 			children = (
+				CE49568A240D8EE600A032D3 /* Core Data */,
 				CE495677240C344E00A032D3 /* Stocks-Widget.entitlements */,
 				CE495674240C330600A032D3 /* Models */,
 				CE495671240C32E300A032D3 /* Responses */,
@@ -367,6 +375,31 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		CE495685240D8A6800A032D3 /* Application Layer */ = {
+			isa = PBXGroup;
+			children = (
+				CE495686240D8A8000A032D3 /* Classes */,
+			);
+			path = "Application Layer";
+			sourceTree = "<group>";
+		};
+		CE495686240D8A8000A032D3 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				CE495687240D8A9300A032D3 /* SharedPersistentContainer.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		CE49568A240D8EE600A032D3 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				CE49568B240D8EFC00A032D3 /* CoreDataStack.swift */,
+				CE49568D240D8FC600A032D3 /* SharedPersistentContainer.swift */,
+			);
+			path = "Core Data";
+			sourceTree = "<group>";
+		};
 		CEA0D733240BDF9000D2DF1D = {
 			isa = PBXGroup;
 			children = (
@@ -391,6 +424,7 @@
 			isa = PBXGroup;
 			children = (
 				CE495678240C346B00A032D3 /* Stocks-Example.entitlements */,
+				CE495685240D8A6800A032D3 /* Application Layer */,
 				CE495630240BEC9A00A032D3 /* Data Layer */,
 				CE495601240BEB4100A032D3 /* Presentation Layer */,
 				CEA0D73F240BDF9000D2DF1D /* AppDelegate.swift */,
@@ -553,12 +587,15 @@
 			files = (
 				CE49566A240C2D6E00A032D3 /* LineChart.swift in Sources */,
 				CE49566C240C2D8800A032D3 /* DotCALayer.swift in Sources */,
+				CE495689240D8B1100A032D3 /* Stocks_Example.xcdatamodeld in Sources */,
 				CE49565C240C27A100A032D3 /* TodayViewController.swift in Sources */,
 				CE495676240C335E00A032D3 /* StocksDetailModel.swift in Sources */,
+				CE49568C240D8EFC00A032D3 /* CoreDataStack.swift in Sources */,
 				CE49567C240C3BF300A032D3 /* DaysModel.swift in Sources */,
 				CE49567A240C3BDA00A032D3 /* DaysResponse.swift in Sources */,
 				CE495673240C330100A032D3 /* StockDetailResponse.swift in Sources */,
 				CE495670240C2E6100A032D3 /* CurveAlgorithm.swift in Sources */,
+				CE49568E240D8FC600A032D3 /* SharedPersistentContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -598,6 +635,7 @@
 				CE495643240BF42000A032D3 /* MainRepository.swift in Sources */,
 				CE49561F240BEC6900A032D3 /* StockRouter.swift in Sources */,
 				CE49561E240BEC6900A032D3 /* StockInteractor.swift in Sources */,
+				CE495688240D8A9300A032D3 /* SharedPersistentContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
