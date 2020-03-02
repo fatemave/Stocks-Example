@@ -46,7 +46,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kMw-V8-YTN" customClass="LineChart" customModule="Stocks_Widget" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="163" width="320" height="230"/>
+                                <rect key="frame" x="16" y="163" width="288" height="230"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="230" id="GQP-jq-Bfp"/>
@@ -67,23 +67,23 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="5Lb-SH-WAL" firstAttribute="top" secondItem="joL-wK-WjE" secondAttribute="bottom" constant="8" id="0ai-eC-dcR"/>
+                            <constraint firstItem="kMw-V8-YTN" firstAttribute="leading" secondItem="ssy-KU-ocm" secondAttribute="leading" constant="16" id="0ud-FG-OXY"/>
                             <constraint firstItem="pA0-8O-xyT" firstAttribute="top" secondItem="aey-Ke-Apc" secondAttribute="bottom" constant="24" id="1Vh-fO-0gg"/>
                             <constraint firstItem="pDf-Mh-osy" firstAttribute="top" secondItem="itN-em-ZA4" secondAttribute="bottom" constant="8" id="8Oe-sc-mEk"/>
                             <constraint firstItem="pDf-Mh-osy" firstAttribute="leading" secondItem="ssy-KU-ocm" secondAttribute="leading" constant="16" id="8wu-ac-4Je"/>
                             <constraint firstItem="ssy-KU-ocm" firstAttribute="trailing" secondItem="pA0-8O-xyT" secondAttribute="trailing" constant="16" id="9Rb-Vc-5ur"/>
+                            <constraint firstItem="ssy-KU-ocm" firstAttribute="trailing" secondItem="kMw-V8-YTN" secondAttribute="trailing" constant="16" id="I4T-Fv-jOy"/>
                             <constraint firstItem="aey-Ke-Apc" firstAttribute="leading" secondItem="ssy-KU-ocm" secondAttribute="leading" constant="16" id="KrS-D4-vhK"/>
                             <constraint firstItem="s3v-9R-QgU" firstAttribute="centerY" secondItem="pDf-Mh-osy" secondAttribute="centerY" id="KsC-Xm-xy6"/>
                             <constraint firstItem="ssy-KU-ocm" firstAttribute="trailing" secondItem="joL-wK-WjE" secondAttribute="trailing" constant="16" id="LSb-dl-hfG"/>
                             <constraint firstItem="itN-em-ZA4" firstAttribute="top" secondItem="ssy-KU-ocm" secondAttribute="top" constant="16" id="Qts-K6-mxz"/>
                             <constraint firstItem="aey-Ke-Apc" firstAttribute="top" secondItem="pDf-Mh-osy" secondAttribute="bottom" constant="8" id="VbH-aN-NsM"/>
-                            <constraint firstItem="kMw-V8-YTN" firstAttribute="trailing" secondItem="ssy-KU-ocm" secondAttribute="trailing" id="W9o-55-8be"/>
                             <constraint firstItem="kMw-V8-YTN" firstAttribute="top" secondItem="aey-Ke-Apc" secondAttribute="bottom" constant="24" id="bxn-yw-OR3"/>
                             <constraint firstItem="joL-wK-WjE" firstAttribute="centerY" secondItem="pDf-Mh-osy" secondAttribute="centerY" id="dLs-SR-GTP"/>
                             <constraint firstItem="pA0-8O-xyT" firstAttribute="leading" secondItem="ssy-KU-ocm" secondAttribute="leading" constant="16" id="h5M-UI-Tse"/>
                             <constraint firstItem="itN-em-ZA4" firstAttribute="leading" secondItem="ssy-KU-ocm" secondAttribute="leading" constant="16" id="j1w-EX-Dfu"/>
                             <constraint firstItem="joL-wK-WjE" firstAttribute="leading" secondItem="s3v-9R-QgU" secondAttribute="trailing" constant="16" id="oNJ-I2-NqK"/>
                             <constraint firstItem="ssy-KU-ocm" firstAttribute="trailing" secondItem="5Lb-SH-WAL" secondAttribute="trailing" constant="16" id="vbC-3i-Yez"/>
-                            <constraint firstItem="kMw-V8-YTN" firstAttribute="leading" secondItem="ssy-KU-ocm" secondAttribute="leading" id="x6K-UZ-g6b"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ssy-KU-ocm"/>
                     </view>
@@ -103,7 +103,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="94" y="86"/>
+            <point key="canvasLocation" x="92.753623188405811" y="85.714285714285708"/>
         </scene>
     </scenes>
 </document>

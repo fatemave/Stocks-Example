@@ -32,6 +32,15 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         self.extensionContext?.widgetLargestAvailableDisplayMode = .expanded
                 
         self.chartView.isCurved = false
+        
+        self.companyLabel.alpha = 0.0
+        self.priceTitleLabel.alpha = 0.0
+        self.changeValueLabel.alpha = 0.0
+        self.priceValueLabel.alpha = 0.0
+        self.lastUpdateTitleLabel.alpha = 0.0
+        self.lastUpdateValueLabel.alpha = 0.0
+        self.chartTitleLabel.alpha = 0.0
+        self.chartView.alpha = 0.0
 
     }
         
@@ -55,7 +64,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
     
     func loadData() {
-        let groupUserDefaults = UserDefaults(suiteName: "group.pro.AAPL")
+        let groupUserDefaults = UserDefaults(suiteName: "group.pro.appcraft.stocks-example")
         guard let symbol = groupUserDefaults?.value(forKey: "symbol") as? String,
             let url = URL(string: "https://cloud.iexapis.com/stable/stock/\(symbol.lowercased())/quote?token=pk_995f14a470764c0eb3743129d0b82663") else { return }
 
@@ -84,6 +93,17 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                     let dateString = dateFormatter.string(from: Date())
                     
                     self.lastUpdateValueLabel.text = dateString
+                    
+                    UIView.animate(withDuration: 0.5) {
+                        self.companyLabel.alpha = 1.0
+                        self.priceTitleLabel.alpha = 1.0
+                        self.changeValueLabel.alpha = 1.0
+                        self.priceValueLabel.alpha = 1.0
+                        self.lastUpdateTitleLabel.alpha = 1.0
+                        self.lastUpdateValueLabel.alpha = 1.0
+                        self.chartTitleLabel.alpha = 1.0
+                        self.chartView.alpha = 1.0
+                    }
                 }
             }
         }
@@ -92,7 +112,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
     
     func loadChartData() {
-        let groupUserDefaults = UserDefaults(suiteName: "group.pro.AAPL")
+        let groupUserDefaults = UserDefaults(suiteName: "group.pro.appcraft.stocks-example")
         guard let symbol = groupUserDefaults?.value(forKey: "symbol") as? String,
             let url = URL(string: "https://cloud.iexapis.com/stable/stock/\(symbol.lowercased())/chart/5d?token=pk_995f14a470764c0eb3743129d0b82663") else { return }
 

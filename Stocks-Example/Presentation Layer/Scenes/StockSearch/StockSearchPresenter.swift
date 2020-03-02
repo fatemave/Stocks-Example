@@ -57,7 +57,7 @@ class StockSearchPresenter: ViperPresenter, StockSearchPresenterInput, StockSear
     }
     
     func select(symbol: String) {
-        let groupUserDefaults = UserDefaults(suiteName: "group.pro.AAPL")
+        let groupUserDefaults = UserDefaults(suiteName: "group.pro.appcraft.stocks-example")
         groupUserDefaults?.setValue(symbol, forKey: "symbol")
 
         self.router?.goBack(animated: true)

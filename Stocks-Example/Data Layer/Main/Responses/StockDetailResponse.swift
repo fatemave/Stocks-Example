@@ -42,7 +42,7 @@ extension StockDetailResponse: RemoteMappable {
         guard let latestUpdate = self.latestUpdate else { return nil }
         guard let change = self.change else { return nil }
         guard let changePercent = self.changePercent else { return nil }
-        guard let volume = self.volume else { return nil }
+        let volume = self.volume ?? 0
         
         let model = StockDetailModel(symbol: symbol, companyName: companyName, latestPrice: latestPrice, latestTime: latestTime, latestUpdate: latestUpdate, change: change, changePercent: changePercent, volume: volume)
         
