@@ -7,14 +7,21 @@
 //
 
 import GKViper
+import GKRepresentable
 
-protocol StockSearchViewInput: ViperViewInput { }
+protocol StockSearchViewInput: ViperViewInput {
+    func updateSections(_ sections: [TableSectionModel])
+}
 
-protocol StockSearchViewOutput: ViperViewOutput { }
+protocol StockSearchViewOutput: ViperViewOutput {
+    func filterContent(for searchText: String)
+    func select(symbol: String)
+}
 
 class StockSearchViewController: ViperViewController, StockSearchViewInput {
 
     // MARK: - Outlets
+    @IBOutlet private weak var tableView: UITableView!
     
     // MARK: - Props
     fileprivate var output: StockSearchViewOutput? {
@@ -22,7 +29,8 @@ class StockSearchViewController: ViperViewController, StockSearchViewInput {
         return output
     }
     
-    let searchController = UISearchController(searchResultsController: nil)
+    private let searchController = UISearchController(searchResultsController: nil)
+    private var sections: [TableSectionModel] = []
     
     // MARK: - Lifecycle
     override func viewDidLayoutSubviews() {
@@ -38,6 +46,15 @@ class StockSearchViewController: ViperViewController, StockSearchViewInput {
         self.definesPresentationContext = true
         self.navigationItem.titleView = searchController.searchBar
         self.searchController.hidesNavigationBarDuringPresentation = false
+        self.searchController.obscuresBackgroundDuringPresentation = false
+        
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.separatorStyle = .none
+        self.tableView.contentInset = UIEdgeInsets(top: 16.0, left: 0.0, bottom: 16.0, right: 0.0)
+        self.tableView.backgroundColor = .white
+        self.tableView.registerCellNib(StockSearchCell.self)
+        
     }
     
     func setupActions() { }
@@ -52,28 +69,81 @@ class StockSearchViewController: ViperViewController, StockSearchViewInput {
         self.setupActions()
     }
     
+    override func beginLoading() {
+        super.beginLoading()
+        DispatchQueue.main.async {
+            ActivityView.shared.show(from: self)
+        }
+    }
+    
+    override func finishLoading(with error: Error?) {
+        super.finishLoading(with: error)
+        DispatchQueue.main.async {
+            ActivityView.shared.hide()
+            self.searchController.searchBar.searchTextField.becomeFirstResponder()
+        }
+    }
+    
+    func updateSections(_ sections: [TableSectionModel]) {
+        self.sections = sections
+        
+        DispatchQueue.main.async { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.tableView.reloadData()
+        }
+    }
 }
 
 // MARK: - Actions
 extension StockSearchViewController { }
 
 // MARK: - Module functions
-extension StockSearchViewController { }
+extension StockSearchViewController {
+    func filterContent(for searchText: String) {
+        self.output?.filterContent(for: searchText)
+    }
+}
 
-extension StockSearchViewController: UITableViewDelegate { }
+extension StockSearchViewController: UITableViewDelegate, UITableViewDataSource {
 
-extension StockSearchViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return self.sections.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return self.sections[section].rows.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let model = self.sections[indexPath.section].rows[indexPath.row]
+        
+        if model is StockSearchCellModel {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: model.cellIdentifier) as? StockSearchCell else { return UITableViewCell() }
+            cell.model = model
+            return cell
+        }
+        
         return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let model = self.sections[indexPath.section].rows[indexPath.row]
+         
+         if let model = model as? StockSearchCellModel {
+            self.output?.select(symbol: model.symbol)
+         }
     }
 }
 
 extension StockSearchViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        
+        if let searchText = searchController.searchBar.text {
+            self.filterContent(for: searchText)
+        }
     }
 }

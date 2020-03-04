@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="M4Y-Lb-cyx">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Today View Controller-->
+        <scene sceneID="cwh-vc-ff4">
+            <objects>
+                <viewController id="M4Y-Lb-cyx" customClass="TodayViewController" customModule="Stocks_Widget" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" simulatedAppContext="notificationCenter" id="S3S-Oj-5AN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="370"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="itN-em-ZA4">
+                                <rect key="frame" x="16" y="60" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pDf-Mh-osy">
+                                <rect key="frame" x="16" y="89" width="43.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last update:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aey-Ke-Apc">
+                                <rect key="frame" x="16" y="118" width="95.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="joL-wK-WjE">
+                                <rect key="frame" x="262" y="89" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Lb-SH-WAL">
+                                <rect key="frame" x="262" y="118" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kMw-V8-YTN" customClass="LineChart" customModule="Stocks_Widget" customModuleProvider="target">
+                                <rect key="frame" x="16" y="163" width="288" height="230"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="230" id="GQP-jq-Bfp"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Сhanges in the previous 5 days:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pA0-8O-xyT">
+                                <rect key="frame" x="16" y="163" width="288" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s3v-9R-QgU">
+                                <rect key="frame" x="204" y="89" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="5Lb-SH-WAL" firstAttribute="top" secondItem="joL-wK-WjE" secondAttribute="bottom" constant="8" id="0ai-eC-dcR"/>
+                            <constraint firstItem="kMw-V8-YTN" firstAttribute="leading" secondItem="ssy-KU-ocm" secondAttribute="leading" constant="16" id="0ud-FG-OXY"/>
+                            <constraint firstItem="pA0-8O-xyT" firstAttribute="top" secondItem="aey-Ke-Apc" secondAttribute="bottom" constant="24" id="1Vh-fO-0gg"/>
+                            <constraint firstItem="pDf-Mh-osy" firstAttribute="top" secondItem="itN-em-ZA4" secondAttribute="bottom" constant="8" id="8Oe-sc-mEk"/>
+                            <constraint firstItem="pDf-Mh-osy" firstAttribute="leading" secondItem="ssy-KU-ocm" secondAttribute="leading" constant="16" id="8wu-ac-4Je"/>
+                            <constraint firstItem="ssy-KU-ocm" firstAttribute="trailing" secondItem="pA0-8O-xyT" secondAttribute="trailing" constant="16" id="9Rb-Vc-5ur"/>
+                            <constraint firstItem="ssy-KU-ocm" firstAttribute="trailing" secondItem="kMw-V8-YTN" secondAttribute="trailing" constant="16" id="I4T-Fv-jOy"/>
+                            <constraint firstItem="aey-Ke-Apc" firstAttribute="leading" secondItem="ssy-KU-ocm" secondAttribute="leading" constant="16" id="KrS-D4-vhK"/>
+                            <constraint firstItem="s3v-9R-QgU" firstAttribute="centerY" secondItem="pDf-Mh-osy" secondAttribute="centerY" id="KsC-Xm-xy6"/>
+                            <constraint firstItem="ssy-KU-ocm" firstAttribute="trailing" secondItem="joL-wK-WjE" secondAttribute="trailing" constant="16" id="LSb-dl-hfG"/>
+                            <constraint firstItem="itN-em-ZA4" firstAttribute="top" secondItem="ssy-KU-ocm" secondAttribute="top" constant="16" id="Qts-K6-mxz"/>
+                            <constraint firstItem="aey-Ke-Apc" firstAttribute="top" secondItem="pDf-Mh-osy" secondAttribute="bottom" constant="8" id="VbH-aN-NsM"/>
+                            <constraint firstItem="kMw-V8-YTN" firstAttribute="top" secondItem="aey-Ke-Apc" secondAttribute="bottom" constant="24" id="bxn-yw-OR3"/>
+                            <constraint firstItem="joL-wK-WjE" firstAttribute="centerY" secondItem="pDf-Mh-osy" secondAttribute="centerY" id="dLs-SR-GTP"/>
+                            <constraint firstItem="pA0-8O-xyT" firstAttribute="leading" secondItem="ssy-KU-ocm" secondAttribute="leading" constant="16" id="h5M-UI-Tse"/>
+                            <constraint firstItem="itN-em-ZA4" firstAttribute="leading" secondItem="ssy-KU-ocm" secondAttribute="leading" constant="16" id="j1w-EX-Dfu"/>
+                            <constraint firstItem="joL-wK-WjE" firstAttribute="leading" secondItem="s3v-9R-QgU" secondAttribute="trailing" constant="16" id="oNJ-I2-NqK"/>
+                            <constraint firstItem="ssy-KU-ocm" firstAttribute="trailing" secondItem="5Lb-SH-WAL" secondAttribute="trailing" constant="16" id="vbC-3i-Yez"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ssy-KU-ocm"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="370"/>
+                    <connections>
+                        <outlet property="changeValueLabel" destination="s3v-9R-QgU" id="OtY-N7-pLe"/>
+                        <outlet property="chartTitleLabel" destination="pA0-8O-xyT" id="O6u-7W-aEO"/>
+                        <outlet property="chartView" destination="kMw-V8-YTN" id="RGv-mi-y9W"/>
+                        <outlet property="companyLabel" destination="itN-em-ZA4" id="6I4-P1-UPC"/>
+                        <outlet property="lastUpdateTitleLabel" destination="aey-Ke-Apc" id="exg-sG-eWz"/>
+                        <outlet property="lastUpdateValueLabel" destination="5Lb-SH-WAL" id="isl-yl-D78"/>
+                        <outlet property="priceTitleLabel" destination="pDf-Mh-osy" id="bZm-t1-L1y"/>
+                        <outlet property="priceValueLabel" destination="joL-wK-WjE" id="NZA-Wl-zyW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="92.753623188405811" y="85.714285714285708"/>
+        </scene>
+    </scenes>
+</document>

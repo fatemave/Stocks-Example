@@ -8,9 +8,13 @@
 
 import GKViper
 
-protocol StockInteractorInput: ViperInteractorInput { }
+protocol StockInteractorInput: ViperInteractorInput {
+    func getStockDetail(symbol: String)
+}
 
-protocol StockInteractorOutput: ViperInteractorOutput { }
+protocol StockInteractorOutput: ViperInteractorOutput {
+    func provideStockDetail(model: StockDetailModel)
+}
 
 open class StockInteractor: ViperInteractor, StockInteractorInput {
 
@@ -22,12 +26,26 @@ open class StockInteractor: ViperInteractor, StockInteractorInput {
         return output
     }
     
+    let mainRepository = MainRepository()
+    
     // MARK: - Initialization
     override init() {        
         super.init()
     }
     
     // MARK: - StockInteractorInput
+    
+    func getStockDetail(symbol: String) {
+        self.mainRepository.getDetail(symbol: symbol) { model in
+            guard let model = model else {
+                self.output?.finishLoading(with: NSError(domain: "",
+                                                         code: 500,
+                                                         userInfo: [NSLocalizedDescriptionKey: "Load error"]) as Error)
+                return
+            }
+            self.output?.provideStockDetail(model: model)
+        }
+    }
     
     // MARK: - Module functions
 }
